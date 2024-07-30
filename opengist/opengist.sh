@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./download.sh
+download.sh
 
 if [ $? -eq 0 ]; then
   sudo docker-compose up -d
