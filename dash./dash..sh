@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Docker-Container mit den angegebenen Optionen starten
-docker container run -it \
+sudo docker container run -d \
   -p 80:3001 \
   -v /:/mnt/host:ro \
   --privileged \
