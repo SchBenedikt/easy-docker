@@ -11,16 +11,15 @@ cd /home/$USERNAME/$ORDNERNAME
 wget https://raw.githubusercontent.com/SchBenedikt/easy-docker/main/opengist/docker-compose.yml
 
 if [ $? -eq 0 ]; then
-    echo "Die Datei wurde erfolgreich heruntergeladen und befindet sich in /home/$USERNAME/$ORDNERNAME/docker-compose.yml"
-    
-    # Ausführen von 'sudo docker compose up -d'
+    echo -e "\e[32mThe file has been successfully downloaded and is located at /home/$USERNAME/$ORDNERNAME/docker-compose.yml\e[0m"
+
     sudo docker compose up -d
     
     if [ $? -eq 0 ]; then
-        echo "'sudo docker compose up -d' wurde erfolgreich ausgeführt."
+        echo -e "\e[32m'sudo docker compose up -d' has been successfully executed.\e[0m"
     else
-        echo "Beim Ausführen von 'sudo docker compose up -d' ist ein Fehler aufgetreten."
+        echo -e "\e[31mAn error occurred while executing 'sudo docker compose up -d'.\e[0m"
     fi
 else
-    echo "Beim Herunterladen der Datei ist ein Fehler aufgetreten."
+    echo -e "\e[31mAn error occurred while downloading the file.\e[0m"
 fi
