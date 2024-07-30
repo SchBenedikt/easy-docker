@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# URL der download.sh Datei
-DOWNLOAD_SCRIPT_URL="https://raw.githubusercontent.com/SchBenedikt/easy-docker/main/opengist/download.sh"
+# Definieren von Benutzernamen und Ordnernamen
+USERNAME="benedikt"
+ORDNERNAME="ORDNERNAME"
 
-# Datei lokal speichern
-curl -O $DOWNLOAD_SCRIPT_URL
+# Erstellen des Ordners
+mkdir -p /home/$USERNAME/$ORDNERNAME
 
-# Datei ausführbar machen
-chmod +x download.sh
+# Wechseln in den erstellten Ordner
+cd /home/$USERNAME/$ORDNERNAME
 
-# download.sh ausführen
-./download.sh
+# Herunterladen der Datei docker-compose.yml
+wget https://raw.githubusercontent.com/SchBenedikt/easy-docker/main/opengist/docker-compose.yml
 
-# Prüfen, ob download.sh erfolgreich ausgeführt wurde
+# Bestätigung der erfolgreichen Ausführung
 if [ $? -eq 0 ]; then
-  # Ausführen von "sudo docker-compose up -d"
-  sudo docker-compose up -d
+    echo "Die Datei wurde erfolgreich heruntergeladen und befindet sich in /home/$USERNAME/$ORDNERNAME/docker-compose.yml"
 else
-  echo "download.sh fehlgeschlagen. Docker Compose wird nicht gestartet."
+    echo "Beim Herunterladen der Datei ist ein Fehler aufgetreten."
 fi
